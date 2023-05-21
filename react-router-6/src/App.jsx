@@ -4,8 +4,10 @@ import { Routes, Route, Link, NavLink } from "react-router-dom"
 import About from './pages/about'
 import Home from './pages/home'
 import Vans from './pages/vans'
+import VanDetail from './pages/vandetail'
 
 import './server'
+
 
 function App() {
 
@@ -24,6 +26,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
         <Route path='/vans' element={<Vans />} />
+        <Route path='/vans/:id' element={<VanDetail />} />
       </Routes>
     </>
 
