@@ -46,7 +46,7 @@ export default function HostVanDetail() {
                     <NavLink style={({ isActive }) => isActive ? activeStyle : null} to="pricing" >Pricing</NavLink>
                     <NavLink style={({ isActive }) => isActive ? activeStyle : null} to="photos" >Photos</NavLink>
                 </nav>
-                <Outlet />
+                <Outlet context={{ currentVan }} />
             </div>
         </section>
     )
