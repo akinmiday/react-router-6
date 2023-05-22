@@ -4,7 +4,7 @@ import { useParams, Link, Outlet, NavLink } from "react-router-dom"
 const activeStyle = {
     fontWeight: "bold",
     textDecoration: "underline",
-    color: "#161616"
+    color: "161616"
 }
 
 export default function HostVanDetail() {
