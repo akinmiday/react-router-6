@@ -183,6 +183,15 @@ footer {
     padding-inline: 23px
 }
 
+.van-list-filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.van-list-filter-buttons > a {
+    margin-right: 15px;
+}
+
 .van-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -216,6 +225,7 @@ footer {
     background-color: #FFEAD0;
     color: #4D4D4D;
     transition: 200ms all cubic-bezier(0.4, 0, 0.2, 1);
+    
 }
 
 .van-type:hover {
