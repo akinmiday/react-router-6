@@ -7,7 +7,6 @@ export function loader() {
     return getVans()
 }
 
-
 export default function Vans() {
 
     const [searchParams, setSearchParams] = useSearchParams()
