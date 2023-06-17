@@ -18,8 +18,6 @@ export default function Vans() {
 
     const typeFilter = searchParams.get("type")
 
-
-
     const displayedVans = typeFilter
         ? vans.filter(van => van.type === typeFilter)
         : vans
@@ -52,18 +50,6 @@ export default function Vans() {
         <div className="van-list-container">
             <h1>Explore our van options</h1>
             <div className="van-list-filter-buttons" >
-                {/* <Link to="?type=simple"
-                    className="van-type simple"
-                >Simple</Link>
-                <Link to="?type=luxury"
-                    className="van-type luxury"
-                >Luxury</Link>
-                <Link to="?type=rugged"
-                    className="van-type rugged"
-                >Rugged</Link>
-                <Link to="."
-                    className="van-type clear-filters"
-                >Clear</Link> */}
 
                 <button className={`van-type simple ${typeFilter === "simple" ? "selected" : ""}`} onClick={() => setSearchParams({ type: "simple" })} >Simple</button>
                 <button className={`van-type luxury ${typeFilter === "luxury" ? "selected" : ""}`} onClick={() => setSearchParams({ type: "luxury" })} >Luxury</button>

@@ -5,7 +5,6 @@ import About from './pages/about'
 import Home from './pages/home'
 import Vans, { loader as vansLoader } from './pages/vans'
 import VanDetail from './pages/vandetail'
-import './server'
 import Layout from './components/layout'
 import Header from './components/header'
 import DashBoard from './pages/host/dashboard'
@@ -19,6 +18,10 @@ import HostVanPhotos from './pages/host/hostvanphotos'
 import HostVanInfo from './pages/host/hostvaninfo'
 import NotFound from './pages/notfound'
 import ErrorPage from './pages/error'
+import Login from './pages/Login'
+
+
+import './server'
 
 
 
@@ -27,6 +30,7 @@ const router = createBrowserRouter(
     <Route path='/' element={<Layout />} >
       <Route index element={<Home />} />
       <Route path='about' element={<About />} />
+      <Route path='login' element={<Login />} />
 
       <Route path='vans' element={<Vans />} errorElement={<ErrorPage />} loader={vansLoader} />
       <Route path='vans/:id' element={<VanDetail />} />
