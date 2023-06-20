@@ -18,9 +18,9 @@ export default function Login() {
     }
 
     return (
-        <div className="login-container" >
+        <div className="login-container">
             <h1>Sign in to your account</h1>
-            <form>
+            <form onSubmit={handleSubmit} className="login-form">
                 <input
                     name="email"
                     onChange={handleChange}
@@ -28,7 +28,6 @@ export default function Login() {
                     placeholder="Email address"
                     value={loginFormData.email}
                 />
-
                 <input
                     name="password"
                     onChange={handleChange}
@@ -36,7 +35,6 @@ export default function Login() {
                     placeholder="Password"
                     value={loginFormData.password}
                 />
-
                 <button>Log in</button>
             </form>
         </div>

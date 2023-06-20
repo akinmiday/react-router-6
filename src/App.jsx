@@ -4,15 +4,15 @@ import { Route, createBrowserRouter, RouterProvider, createRoutesFromElements } 
 import About from './pages/about'
 import Home from './pages/home'
 import Vans, { loader as vansLoader } from './pages/vans'
-import VanDetail from './pages/vandetail'
+import VanDetail, { loader as vanDetailLoader } from './pages/vandetail'
 import Layout from './components/layout'
 import Header from './components/header'
 import DashBoard from './pages/host/dashboard'
 import Income from './pages/host/income'
 import Reviews from './pages/host/reviews'
 import HostLayout from './pages/host/hostlayout'
-import HostVan from './pages/host/hostvan'
-import HostVanDetail from './pages/host/hostvandetail'
+import HostVan, { loader as hostVanLoader } from './pages/host/hostvan'
+import HostVanDetail, { loader as hostVanDetailLoader } from './pages/host/hostvandetail'
 import HostVanPricing from './pages/host/hostvanpricing'
 import HostVanPhotos from './pages/host/hostvanphotos'
 import HostVanInfo from './pages/host/hostvaninfo'
@@ -32,21 +32,76 @@ const router = createBrowserRouter(
       <Route path='about' element={<About />} />
       <Route path='login' element={<Login />} />
 
-      <Route path='vans' element={<Vans />} errorElement={<ErrorPage />} loader={vansLoader} />
-      <Route path='vans/:id' element={<VanDetail />} />
+      <Route path='vans' element={<Vans />}
+        errorElement={<ErrorPage />}
+        loader={vansLoader}
+      />
+      <Route
+        path='vans/:id'
+        element={<VanDetail />}
+        loader={vanDetailLoader}
+      />
 
       <Route path='host' element={<HostLayout />}>
-        <Route index element={<DashBoard />} />
-        <Route path='income' element={<Income />} />
-        <Route path='reviews' element={<Reviews />} />
-        <Route path='vans' element={<HostVan />} />
-        <Route path='vans/:id' element={<HostVanDetail />} >
-          <Route index element={<HostVanInfo />} />
-          <Route path="pricing" element={<HostVanPricing />} />
-          <Route path="photos" element={<HostVanPhotos />} />
+
+
+        <Route
+          index
+          element={<DashBoard />}
+          loader={async () => {
+            return null
+          }}
+        />
+        <Route
+          path='income'
+          element={<Income />}
+          loader={async () => {
+            return null
+          }}
+        />
+        <Route
+          path='reviews'
+          element={<Reviews />}
+          loader={async () => {
+            return null
+          }}
+        />
+        <Route
+          path='vans'
+          element={<HostVan />}
+          loader={hostVanLoader}
+        />
+        <Route
+          path='vans/:id'
+          element={<HostVanDetail />}
+          loader={hostVanDetailLoader} >
+
+          <Route index
+            element={<HostVanInfo />}
+            loader={async () => {
+              return null
+            }}
+          />
+          <Route
+            path="pricing"
+            element={<HostVanPricing />}
+            loader={async () => {
+              return null
+            }}
+          />
+
+          <Route
+            path="photos"
+            element={<HostVanPhotos />}
+            loader={async () => {
+              return null
+            }}
+          />
         </Route>
       </Route>
-      <Route path="*" element={<NotFound />} />
+      <Route
+        path="*"
+        element={<NotFound />} />
     </Route>
   )
 )

@@ -1,25 +1,22 @@
 import React from "react";
-import { useLocation, useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useLocation, useParams, Link, useLoaderData } from "react-router-dom";
+import { getVans } from "../api";
+
+export function loader({ params }) {
+    return getVans(params.id)
+}
+
 
 export default function VanDetail() {
-    const params = useParams()
     const location = useLocation()
-    const [van, setVan] = React.useState(null)
-
-
-    React.useEffect(() => {
-        fetch(`/api/vans/${params.id}`)
-            .then(res => res.json())
-            .then(data => setVan(data.vans))
-    }, [params.id])
+    const van = useLoaderData()
 
 
 
-    const search = location.state?.search || ""
+    const search = location.state?.search || "";
     // const search = location.state && location.state.search || ""
 
-    const type = location.state?.type || "all"
+    const type = location.state?.type || "all";
 
 
     return (
@@ -30,17 +27,16 @@ export default function VanDetail() {
                 className="back-button"
             >&larr; Back to {type} Vans</Link>
 
-            {van ? (
-                <div className="van-detail">
-                    <img src={van.imageUrl} />
-                    <i className={`van-type ${van.type} selected`} >{van.type}</i>
-                    <h2>{van.name}</h2>
-                    <p className="van-price" ><span>${van.price}</span>/day</p>
-                    <p>{van.description}</p>
-                    <button className="link-button" >Rent this van</button>
-                </div>
 
-            ) : <h2>Loading....</h2>}
+            <div className="van-detail">
+                <img src={van.imageUrl} />
+                <i className={`van-type ${van.type} selected`} >{van.type}</i>
+                <h2>{van.name}</h2>
+                <p className="van-price" ><span>${van.price}</span>/day</p>
+                <p>{van.description}</p>
+                <button className="link-button" >Rent this van</button>
+            </div>
+
         </div>
     )
 }
