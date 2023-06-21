@@ -76,7 +76,7 @@ const router = createBrowserRouter(
           <Route
             path="pricing"
             element={<HostVanPricing />}
-            lloader={async () => await requireAuth()}
+            loader={async () => await requireAuth()}
           />
 
           <Route
