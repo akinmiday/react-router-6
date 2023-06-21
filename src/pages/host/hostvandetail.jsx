@@ -16,11 +16,6 @@ export default function HostVanDetail() {
     const { id } = useParams()
     const currentVan = useLoaderData()
 
-
-    if (!currentVan) {
-        return <h1>Loading...</h1>
-    }
-
     return (
         <section>
             <Link to=".."

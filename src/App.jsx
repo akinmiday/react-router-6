@@ -19,6 +19,7 @@ import HostVanInfo from './pages/host/hostvaninfo'
 import NotFound from './pages/notfound'
 import ErrorPage from './pages/error'
 import Login from './pages/Login'
+import { requireAuth } from './utils'
 
 
 import './server'
@@ -43,28 +44,20 @@ const router = createBrowserRouter(
       />
 
       <Route path='host' element={<HostLayout />}>
-
-
         <Route
           index
           element={<DashBoard />}
-          loader={async () => {
-            return null
-          }}
+          loader={async () => await requireAuth()}
         />
         <Route
           path='income'
           element={<Income />}
-          loader={async () => {
-            return null
-          }}
+          loader={async () => await requireAuth()}
         />
         <Route
           path='reviews'
           element={<Reviews />}
-          loader={async () => {
-            return null
-          }}
+          loader={async () => await requireAuth()}
         />
         <Route
           path='vans'
@@ -78,24 +71,18 @@ const router = createBrowserRouter(
 
           <Route index
             element={<HostVanInfo />}
-            loader={async () => {
-              return null
-            }}
+            loader={async () => await requireAuth()}
           />
           <Route
             path="pricing"
             element={<HostVanPricing />}
-            loader={async () => {
-              return null
-            }}
+            lloader={async () => await requireAuth()}
           />
 
           <Route
             path="photos"
             element={<HostVanPhotos />}
-            loader={async () => {
-              return null
-            }}
+            loader={async () => await requireAuth()}
           />
         </Route>
       </Route>
